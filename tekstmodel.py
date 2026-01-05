@@ -53,4 +53,4 @@ geen vraag, of wel?"""
 tm.read_text_from_file('test.txt')
 assert tm.text == test_text
 
-Dit is een leuke tekst 
+Dit is een leuke tekst in clean string branche
