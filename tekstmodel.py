@@ -35,9 +35,20 @@ class TextModel:
 
     # Voeg hier andere methodes toe.
     # Je hebt in het bijzonder methodes nodig die het model vullen.
+    def read_text_from_file(self, filename):
+        """Open the given file from parameter filename, read the file and add the content of the file to self.text"""
+        with open(filename) as data:
+            self.text = data.read()
 
 
 # Hier kan je dingen testen...
 tm = TextModel()
 # Zet hier aanroepen neer die het model vullen met informatie
 print('TextModel:', tm)
+
+test_text = """Dit is een korte zin. Dit is geen korte zin, omdat
+deze zin meer dan 10 woorden en een getal bevat! Dit is
+geen vraag, of wel?"""
+
+tm.read_text_from_file('test.txt')
+assert tm.text == test_text
