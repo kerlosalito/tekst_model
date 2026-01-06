@@ -6,6 +6,8 @@
 # Naam:
 #
 
+import string
+
 
 class TextModel:
     """A class supporting complex models of text."""
@@ -40,6 +42,15 @@ class TextModel:
         with open(filename) as data:
             self.text = data.read()
 
+    def clean_string(self, s):
+        s = s.lower()
+
+        for p in string.punctuation:
+            s = s.replace(p, '')
+        
+        return s
+
+
 
 # Hier kan je dingen testen...
 tm = TextModel()
@@ -51,4 +62,10 @@ deze zin meer dan 10 woorden en een getal bevat! Dit is
 geen vraag, of wel?"""
 
 tm.read_text_from_file('test.txt')
-assert tm.text == test_text
+assert tm.text == test_text 
+
+clean_text = """dit is een korte zin dit is geen korte zin omdat
+deze zin meer dan 10 woorden en een getal bevat dit is
+geen vraag of wel"""
+clean_s = tm.clean_string(tm.text)
+assert clean_s == clean_text
